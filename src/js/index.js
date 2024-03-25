@@ -24,4 +24,10 @@ function shuffleAndPickRandom(items) {
     throw new Error("Передайте эмодзи в виде массива!");
   }
 }
-
+/**
+ * Переворачивает карту и обрабатывает ход игрока
+ * @param {HTMLDivElement} card - Карточка для переворачивания.
+ */
+const flipCard = (card) => {
+  console.log("родитель карточки получен", card);
+};
