@@ -60,3 +60,30 @@ const SELECTORS = {
   timer: document.querySelector(".timer"),
   start: document.querySelector("button"),
 };
+
+/**
+ * Генерация игрового поля
+ */
+const generateGame = () => {
+  // Получение data атрибута
+  const dimensions = SELECTORS.board.dataset.dimension;
+
+  if (dimensions % 2 !== 0) {
+    throw new Error("Размер игрового поля должен быть четным!");
+  }
+
+  // Вызываем функцию перемешивания и получения случайной карточки для эмодзи
+  const shuffleAndPickEmoji = shuffleAndPickRandom(EMOJIS);
+
+  const cardsHtML = shuffleAndPickEmoji 
+    .map((imodji) =>{
+      return `
+      <div class="card">
+      <div class="card-front"></div>
+      <div class="card-back">${imodji}</div>
+    </div>`
+    })
+    .join("");
+};
+
+
