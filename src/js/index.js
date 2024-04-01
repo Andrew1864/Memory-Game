@@ -84,6 +84,32 @@ const generateGame = () => {
     </div>`
     })
     .join("");
+    //Вставка карточек в игровое поле
+    SELECTORS.board.insertAdjacentHTML("beforeend", cardsHtML);
+};
+ // Фунцию обработки события "клик по карточке"
+const attachEventListeners = () =>{
+  // Получения HTMLcollection родителя карточек (card)
+  const cardCollection = SELECTORS.board.children;
+
+  if(cardCollection) {
+    // Массив collections 
+    [...cardCollection].forEach((card)=>{
+      card.addEventListener("click", (event)=>{
+        //Получаем событие "Елемент, по которому произошол клик" и его родительского елемента
+        const eventTarget = event.target;
+        const eventParent = eventTarget.parentElement;
+        //Если родитель содержит класс "card", и он не перевернут, вызовим функцию "flipCard"
+        if (
+          eventParent.classList.contains("card") &&
+          !eventParent.className.includes("flipped")
+        ){
+          flipCard(eventParent);
+        }
+        
+      });
+    });
+  ;}
 };
 
 
